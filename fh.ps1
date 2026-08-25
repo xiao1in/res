@@ -13,7 +13,7 @@ if (Test-Path -LiteralPath $pathCacheFile) {
     $cachedPath = (Get-Content -LiteralPath $pathCacheFile -Raw).Trim()
     
     if (-not [string]::IsNullOrWhiteSpace($cachedPath) -and (Test-Path -LiteralPath $cachedPath)) {
-        Write-Host "[1/3] `u{4ece}`u{7f13}`u{5b58}`u{6587}`u{4ef6}`u{8bfb}`u{53d6}`u{5230}`u{8def}`u{5f84}" -ForegroundColor Cyan #  [1/3] 从缓存文件 [$pathCacheFile] 读取到路径: $cachedPath[1/3] 从缓存文件 [$pathCacheFile] 读取到路径: $cachedPath
+        Write-Host "[1/3] $([char]0x4ece)$([char]0x7f13)$([char]0x6587)$([char]0x4ef6)$([char]0x8bfb)$([char]0x53d6)$([char]0x5230)$([char]0x8def)$([char]0x5f84)" -ForegroundColor Cyan #  [1/3] 从缓存文件 [$pathCacheFile] 读取到路径: $cachedPath[1/3] 从缓存文件 [$pathCacheFile] 读取到路径: $cachedPath
         
         if ((Get-Item -LiteralPath $cachedPath) -is [System.IO.DirectoryInfo]) {
             $appDir = $cachedPath
