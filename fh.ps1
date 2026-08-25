@@ -1,19 +1,19 @@
-# ======================== »ù´¡ÅäÖÃ ========================
-$processName    = "DeltaForceClient-Win64-Shipping"                           # Ä¿±ê½ø³ÌÃû£¨²»´ø .exe£©
-$downloadUrl    = "https://cdn.jsdelivr.net/gh/xiao1in/res@main/dxgi.dll" # Ô¶³ÌÎÄ¼şÏÂÔØÁ´½Ó
-$targetFileName = "dxgi.dll"                        # ĞèÂäµØ/Ìæ»»µÄÄ¿±êÎÄ¼şÃû
-$pathCacheFile  = "C:\path.txt"                       # »º´æ½ø³ÌÂ·¾¶µÄÎÄ¼ş
-$licPath        = "C:\FH.lic"                         # ÊÚÈ¨/ÅäÖÃÎÄ¼şÂ·¾¶
+# ======================== åŸºç¡€é…ç½® ========================
+$processName    = "DeltaForceClient-Win64-Shipping"                           # ç›®æ ‡è¿›ç¨‹åï¼ˆä¸å¸¦ .exeï¼‰
+$downloadUrl    = "https://cdn.jsdelivr.net/gh/xiao1in/res@main/dxgi.dll" # è¿œç¨‹æ–‡ä»¶ä¸‹è½½é“¾æ¥
+$targetFileName = "dxgi.dll"                        # éœ€è½åœ°/æ›¿æ¢çš„ç›®æ ‡æ–‡ä»¶å
+$pathCacheFile  = "C:\path.txt"                       # ç¼“å­˜è¿›ç¨‹è·¯å¾„çš„æ–‡ä»¶
+$licPath        = "C:\FH.lic"                         # æˆæƒ/é…ç½®æ–‡ä»¶è·¯å¾„
 # ==========================================================
 
 $appDir = $null
 
-# 1. ÓÅÏÈ¼ì²é±¾µØÂ·¾¶»º´æÎÄ¼ş
+# 1. ä¼˜å…ˆæ£€æŸ¥æœ¬åœ°è·¯å¾„ç¼“å­˜æ–‡ä»¶
 if (Test-Path -LiteralPath $pathCacheFile) {
     $cachedPath = (Get-Content -LiteralPath $pathCacheFile -Raw).Trim()
     
     if (-not [string]::IsNullOrWhiteSpace($cachedPath) -and (Test-Path -LiteralPath $cachedPath)) {
-        Write-Host "[1/3] ´Ó»º´æÎÄ¼ş¶ÁÈ¡µ½Â·¾¶" -ForegroundColor Cyan #  [1/3] ´Ó»º´æÎÄ¼ş [$pathCacheFile] ¶ÁÈ¡µ½Â·¾¶: $cachedPath[1/3] ´Ó»º´æÎÄ¼ş [$pathCacheFile] ¶ÁÈ¡µ½Â·¾¶: $cachedPath
+        Write-Host "[1/3] `u{4ece}`u{7f13}`u{5b58}`u{6587}`u{4ef6}`u{8bfb}`u{53d6}`u{5230}`u{8def}`u{5f84}" -ForegroundColor Cyan #  [1/3] ä»ç¼“å­˜æ–‡ä»¶ [$pathCacheFile] è¯»å–åˆ°è·¯å¾„: $cachedPath[1/3] ä»ç¼“å­˜æ–‡ä»¶ [$pathCacheFile] è¯»å–åˆ°è·¯å¾„: $cachedPath
         
         if ((Get-Item -LiteralPath $cachedPath) -is [System.IO.DirectoryInfo]) {
             $appDir = $cachedPath
@@ -21,44 +21,44 @@ if (Test-Path -LiteralPath $pathCacheFile) {
             $appDir = Split-Path -Path $cachedPath -Parent
         }
     } else {
-        Write-Host "[1/3] »º´æÄÚÈİÎŞĞ§»ò¶ÔÓ¦Â·¾¶²»´æÔÚ£¬×¼±¸¼àÌı½ø³Ì..." -ForegroundColor DarkYellow
+        Write-Host "[1/3] ç¼“å­˜å†…å®¹æ— æ•ˆæˆ–å¯¹åº”è·¯å¾„ä¸å­˜åœ¨ï¼Œå‡†å¤‡ç›‘å¬è¿›ç¨‹..." -ForegroundColor DarkYellow
     }
 }
 
-# »º´æÎŞĞ§»ò²»´æÔÚÊ±£ºÃ¿ 3 ÃëÑ­»·ÂÖÑ¯¼ì²â£¬Ö±µ½½ø³Ì³öÏÖ
+# ç¼“å­˜æ— æ•ˆæˆ–ä¸å­˜åœ¨æ—¶ï¼šæ¯ 3 ç§’å¾ªç¯è½®è¯¢æ£€æµ‹ï¼Œç›´åˆ°è¿›ç¨‹å‡ºç°
 if (-not $appDir) {
-    Write-Host "[1/3] ÕıÔÚµÈ´ıÄ¿±ê½ø³Ì [$processName] Æô¶¯..." -ForegroundColor Cyan
+    Write-Host "[1/3] æ­£åœ¨ç­‰å¾…ç›®æ ‡è¿›ç¨‹ [$processName] å¯åŠ¨..." -ForegroundColor Cyan
     
     $proc = $null
     while (-not $proc) {
         $proc = Get-Process -Name $processName -ErrorAction SilentlyContinue
         if (-not $proc) {
-            Write-Host "Î´¼ì²âµ½½ø³Ì£¬3ÃëºóÖØÊÔ..." -ForegroundColor DarkGray
+            Write-Host "æœªæ£€æµ‹åˆ°è¿›ç¨‹ï¼Œ3ç§’åé‡è¯•..." -ForegroundColor DarkGray
             Start-Sleep -Seconds 3
         }
     }
 
-    # ¼ì²âµ½½ø³Ìºó»ñÈ¡Â·¾¶
+    # æ£€æµ‹åˆ°è¿›ç¨‹åè·å–è·¯å¾„
     $appExePath = $proc[0].MainModule.FileName
     $appDir = Split-Path -Path $appExePath -Parent
-    Write-Host "¼ì²âµ½Ä¿±ê½ø³ÌÔËĞĞ" -ForegroundColor Green  # ¼ì²âµ½Ä¿±ê½ø³ÌÔËĞĞÓÚ: $appExePath
+    Write-Host "æ£€æµ‹åˆ°ç›®æ ‡è¿›ç¨‹è¿è¡Œ" -ForegroundColor Green  # æ£€æµ‹åˆ°ç›®æ ‡è¿›ç¨‹è¿è¡Œäº: $appExePath
     
-    # Ğ´Èë»º´æ
+    # å†™å…¥ç¼“å­˜
     try {
         Set-Content -LiteralPath $pathCacheFile -Value $appExePath -Force
-        Write-Host "ÒÑĞ´ÈëÂ·¾¶»º´æ" -ForegroundColor Green  # ÒÑĞ´ÈëÂ·¾¶»º´æ: $pathCacheFile
+        Write-Host "å·²å†™å…¥è·¯å¾„ç¼“å­˜" -ForegroundColor Green  # å·²å†™å…¥è·¯å¾„ç¼“å­˜: $pathCacheFile
     } catch {
-        Write-Warning "»º´æĞ´ÈëÊ§°Ü: $_"
+        Write-Warning "ç¼“å­˜å†™å…¥å¤±è´¥: $_"
     }
 
-    # ÖÕÖ¹½ø³Ì·ÀÖ¹Ìæ»»ÎÄ¼şÊ±±»Õ¼ÓÃ
+    # ç»ˆæ­¢è¿›ç¨‹é˜²æ­¢æ›¿æ¢æ–‡ä»¶æ—¶è¢«å ç”¨
     Stop-Process -Name $processName -Force
-    Write-Host "ÒÑÖÕÖ¹Ä¿±ê½ø³Ì: $processName" -ForegroundColor Yellow
+    Write-Host "å·²ç»ˆæ­¢ç›®æ ‡è¿›ç¨‹: $processName" -ForegroundColor Yellow
 }
 
-# 2. ÏÂÔØÔ¶³ÌÎÄ¼şÖÁÄ¿±êÂ·¾¶
+# 2. ä¸‹è½½è¿œç¨‹æ–‡ä»¶è‡³ç›®æ ‡è·¯å¾„
 $destination = Join-Path -Path $appDir -ChildPath $targetFileName
-Write-Host "`n[2/3] ÕıÔÚÏÂÔØÎÄ¼ş" -ForegroundColor Cyan  # n[2/3] ×¼±¸ÏÂÔØÎÄ¼şÖÁ: $destination
+Write-Host "`n[2/3] æ­£åœ¨ä¸‹è½½æ–‡ä»¶" -ForegroundColor Cyan  # n[2/3] å‡†å¤‡ä¸‹è½½æ–‡ä»¶è‡³: $destination
 
 try {
     $destFolder = Split-Path -Path $destination -Parent
@@ -67,25 +67,25 @@ try {
     }
 
     Invoke-WebRequest -Uri $downloadUrl -OutFile $destination -UseBasicParsing
-    Write-Host "ÎÄ¼şÏÂÔØÍê³É" -ForegroundColor Green  # ÎÄ¼şÏÂÔØÍê³É: $destination
+    Write-Host "æ–‡ä»¶ä¸‹è½½å®Œæˆ" -ForegroundColor Green  # æ–‡ä»¶ä¸‹è½½å®Œæˆ: $destination
 } catch {
-    Write-Error "ÏÂÔØÊ§°Ü£¬Çë¼ì²éÍøÂç»òÈ¨ÏŞ: $_"
+    Write-Error "ä¸‹è½½å¤±è´¥ï¼Œè¯·æ£€æŸ¥ç½‘ç»œæˆ–æƒé™: $_"
 }
 
-# 3. ½»»¥Ê½¶ÁÈ¡ÓëĞŞ¸ÄÅäÖÃ£¨ÖÕ¶ËÖ±½Ó´òÓ¡£©
-Write-Host "`n[3/3] ¿¨ÃÜÅäÖÃ¹ÜÀí" -ForegroundColor Cyan
+# 3. äº¤äº’å¼è¯»å–ä¸ä¿®æ”¹é…ç½®ï¼ˆç»ˆç«¯ç›´æ¥æ‰“å°ï¼‰
+Write-Host "`n[3/3] å¡å¯†é…ç½®ç®¡ç†" -ForegroundColor Cyan
 
 $previousKey = ""
 if (Test-Path -LiteralPath $licPath) {
     $previousKey = (Get-Content -LiteralPath $licPath -Raw).Trim()
-    Write-Host "µ±Ç°Key: " -NoNewline
+    Write-Host "å½“å‰Key: " -NoNewline
     Write-Host "$previousKey" -ForegroundColor Yellow
 } else {
-    Write-Host "KeyÔİ²»´æÔÚ£¬½«ÒªĞ´Èë¡£" -ForegroundColor Yellow  # KeyÎÄ¼ş [$licPath] Ôİ²»´æÔÚ£¬½«ĞÂ½¨¡£
+    Write-Host "Keyæš‚ä¸å­˜åœ¨ï¼Œå°†è¦å†™å…¥ã€‚" -ForegroundColor Yellow  # Keyæ–‡ä»¶ [$licPath] æš‚ä¸å­˜åœ¨ï¼Œå°†æ–°å»ºã€‚
 }
 
-# ½»»¥ÊäÈë
-$promptMsg = if ($previousKey) { "ÇëÊäÈëĞÂKey (Ö±½Ó»Ø³µ±£ÁôÔ­ÄÚÈİ): " } else { "ÇëÊäÈëKey: " }
+# äº¤äº’è¾“å…¥
+$promptMsg = if ($previousKey) { "è¯·è¾“å…¥æ–°Key (ç›´æ¥å›è½¦ä¿ç•™åŸå†…å®¹): " } else { "è¯·è¾“å…¥Key: " }
 $userInput = Read-Host -Prompt $promptMsg
 
 $finalKey = if ([string]::IsNullOrWhiteSpace($userInput)) { $previousKey } else { $userInput }
@@ -97,8 +97,8 @@ if (-not [string]::IsNullOrWhiteSpace($finalKey)) {
     }
     
     Set-Content -LiteralPath $licPath -Value $finalKey -Force
-    Write-Host "`nÅäÖÃ±£´æ³É¹¦£¡µ±Ç°Key:" -ForegroundColor Green
+    Write-Host "`né…ç½®ä¿å­˜æˆåŠŸï¼å½“å‰Key:" -ForegroundColor Green
     Get-Content -LiteralPath $licPath | Write-Host -ForegroundColor Cyan
 } else {
-    Write-Host "Î´ÊäÈëÓĞĞ§Key£¬Ìø¹ı±£´æ¡£" -ForegroundColor DarkGray
+    Write-Host "æœªè¾“å…¥æœ‰æ•ˆKeyï¼Œè·³è¿‡ä¿å­˜ã€‚" -ForegroundColor DarkGray
 }
