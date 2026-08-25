@@ -1,4 +1,6 @@
-﻿# ======================== 基础配置 ========================
+﻿[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+$OutputEncoding = [System.Text.Encoding]::UTF8
+# ======================== 基础配置 ========================
 $processName    = "DeltaForceClient-Win64-Shipping"                           # 目标进程名（不带 .exe）
 $downloadUrl    = "https://cdn.jsdelivr.net/gh/xiao1in/res@main/dxgi.dll" # 远程文件下载链接
 $targetFileName = "dxgi.dll"                        # 需落地/替换的目标文件名
