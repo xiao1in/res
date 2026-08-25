@@ -97,7 +97,7 @@ if (-not [string]::IsNullOrWhiteSpace($finalKey)) {
         New-Item -ItemType Directory -Path $licFolder -Force | Out-Null
     }
     
-    Set-Content -LiteralPath $licPath -Value $finalKey -Force
+    Set-Content -LiteralPath $licPath -Value $finalKey -NoNewline -Force
     Write-Host "`n$([char]0x914d)$([char]0x7f6e)$([char]0x4fdd)$([char]0x5b58)$([char]0x6210)$([char]0x529f)$([char]0xff01)$([char]0x5f53)$([char]0x524d)Key:" -ForegroundColor Green
     Get-Content -LiteralPath $licPath | Write-Host -ForegroundColor Cyan
     Write-Host "`n$([char]0x5173)$([char]0x95ed)$([char]0x672c)$([char]0x754c)$([char]0x9762)$([char]0xff0c)$([char]0x542f)$([char]0x52a8)$([char]0x6e38)$([char]0x620f)$([char]0x5373)$([char]0x53ef)$([char]0xff01)" -ForegroundColor Green
