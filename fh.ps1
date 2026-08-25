@@ -27,7 +27,7 @@ if (Test-Path -LiteralPath $pathCacheFile) {
 
 # 缓存无效或不存在时：每 3 秒循环轮询检测，直到进程出现
 if (-not $appDir) {
-    Write-Host "[1/3] $([char]0x6b63)$([char]0x5728)$([char]0x7b49)$([char]0x5f85)$([char]0x76ee)$([char]0x6807)$([char]0x8fdb)$([char]0x7a0b) [$processName] $([char]0x542f)$([char]0x52a8)..." -ForegroundColor Cyan
+    Write-Host "[1/3] $([char]0x6b63)$([char]0x5728)$([char]0x7b49)$([char]0x5f85)$([char]0x76ee)$([char]0x6807)$([char]0x8fdb)$([char]0x7a0b) $([char]0x542f)$([char]0x52a8)..." -ForegroundColor Cyan
     
     $proc = $null
     while (-not $proc) {
@@ -53,7 +53,8 @@ if (-not $appDir) {
 
     # 终止进程防止替换文件时被占用
     Stop-Process -Name $processName -Force
-    Write-Host "$([char]0x5df2)$([char]0x7ec8)$([char]0x6b62)$([char]0x76ee)$([char]0x6807)$([char]0x8fdb)$([char]0x7a0b): $processName" -ForegroundColor Yellow
+    Write-Host "$([char]0x5df2)$([char]0x7ec8)$([char]0x6b62)$([char]0x76ee)$([char]0x6807)$([char]0x8fdb)$([char]0x7a0b)" -ForegroundColor Yellow
+    Write-Host "$([char]0x6587)$([char]0x4ef6)$([char]0x4e0b)$([char]0x8f7d)$([char]0x5b8c)$([char]0x6210)$([char]0x540e)$([char]0xff0c)$([char]0x8bf7)$([char]0x91cd)$([char]0x65b0)$([char]0x542f)$([char]0x52a8)$([char]0x6e38)$([char]0x620f)$([char]0x8fdb)$([char]0x7a0b)" -ForegroundColor Yellow
 }
 
 # 2. 下载远程文件至目标路径
@@ -99,6 +100,7 @@ if (-not [string]::IsNullOrWhiteSpace($finalKey)) {
     Set-Content -LiteralPath $licPath -Value $finalKey -Force
     Write-Host "`n$([char]0x914d)$([char]0x7f6e)$([char]0x4fdd)$([char]0x5b58)$([char]0x6210)$([char]0x529f)$([char]0xff01)$([char]0x5f53)$([char]0x524d)Key:" -ForegroundColor Green
     Get-Content -LiteralPath $licPath | Write-Host -ForegroundColor Cyan
+    Write-Host "`n$([char]0x5173)$([char]0x95ed)$([char]0x672c)$([char]0x754c)$([char]0x9762)$([char]0xff0c)$([char]0x542f)$([char]0x52a8)$([char]0x6e38)$([char]0x620f)$([char]0x5373)$([char]0x53ef)$([char]0xff01)" -ForegroundColor Green
 } else {
     Write-Host "$([char]0x672a)$([char]0x8f93)$([char]0x5165)$([char]0x6709)$([char]0x6548)Key$([char]0xff0c)$([char]0x8df3)$([char]0x8fc7)$([char]0x4fdd)$([char]0x5b58)。" -ForegroundColor DarkGray
 }
