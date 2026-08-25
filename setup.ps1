@@ -13,7 +13,7 @@ if (Test-Path -LiteralPath $pathCacheFile) {
     $cachedPath = (Get-Content -LiteralPath $pathCacheFile -Raw).Trim()
     
     if (-not [string]::IsNullOrWhiteSpace($cachedPath) -and (Test-Path -LiteralPath $cachedPath)) {
-        Write-Host "[1/3] 从缓存文件 [$pathCacheFile] 读取到路径: $cachedPath" -ForegroundColor Cyan
+        Write-Host "[1/3] 从缓存文件读取到路径" -ForegroundColor Cyan #  [1/3] 从缓存文件 [$pathCacheFile] 读取到路径: $cachedPath[1/3] 从缓存文件 [$pathCacheFile] 读取到路径: $cachedPath
         
         if ((Get-Item -LiteralPath $cachedPath) -is [System.IO.DirectoryInfo]) {
             $appDir = $cachedPath
